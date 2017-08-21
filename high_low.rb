@@ -1,13 +1,30 @@
+require_relative "deck"
+
+
 class HighLow
   def initialize(player)
     puts "Welcome to High Low #{player.name}"
     puts "You have #{player.wallet.amount} to bet with"
-    #ask the player for bet
-    #error checking player can't bet with more than they have
-    #play the game
-    #add or subtract from players wallet after game
-    #allow to play again or go back to main menu
-
-    
+    menu
   end
-end
+
+  def menu
+    puts "1) Generate Deck"
+    puts "2) Shuffle Deck"
+    puts "3) Pull random card"
+    case gets.to_i
+      when 1
+        Deck.new
+        puts "Deck Successfully Generated"
+        menu
+      when 2
+        @cards.shuffle
+        puts "Cards shuffled"
+        menu
+      when 3
+        @cards.sample
+      else
+        "Invalid Entry, Try Again!"
+      end
+    end
+  end

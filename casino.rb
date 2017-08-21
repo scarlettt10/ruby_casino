@@ -12,9 +12,8 @@ class Casino
 		puts ""
     @player = Player.new
     menu
-		
   end
-  
+
   def menu
     puts "1) Play HighLow"
     puts "2) Quit"
@@ -39,7 +38,7 @@ class Casino
         menu
     end
   	menu
-  end  
+  end
 end
 
 Casino.new

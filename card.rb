@@ -1,6 +1,6 @@
 
 
-touchclass Card
+class Card
   # Getter and Setter methods for rank, suit and color
   attr_accessor :rank, :suit, :color
   # Gets called when you call the new method to create an instance
