@@ -9,6 +9,7 @@ class Casino
 
 	def initialize
 		puts "Welcome to the RUBY CASINO"
+		puts ""
     @player = Player.new
     menu
 		
@@ -20,11 +21,21 @@ class Casino
     case gets.to_i
       when 1
         HighLow.new(@player)
+      	HighLow
       when 2
         puts "Thanks for playing"
+        puts "?$$'''$N        $$$''^#$            $              d$*'''$d       '$$F  '$r   
+'$$   $$k       9$$    '           d$N            $$F     *        $$>    *   
+'$$   $$F       9$$  :             $$$r          $$$               $$>  f     
+'$$   $$        9$$.e$            . $$$          $$$               $$L.$F     
+'$$**#'         9$$ ^$            f  $$L         $$$               $$> ^F     
+'$$             9$$  '           .   '$$         $$$               $$>  F     
+'$$             9$$     '        P''''$$N        '$$.     J        $$>    x   
+{$$             9$$   .$        '     '$$         ^$$.   d$        $$r   dF   
+''''           `''''''''       '''    ''''           ''''         ''''''''".colorize(:cyan)
         exit
       else 
-        puts "Invlaid Choice! Try again!"
+        puts "Invalid Choice! Try again!"
         menu
     end
   	menu
