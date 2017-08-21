@@ -3,6 +3,7 @@ require_relative 'wallet'
 class Player
 	attr_accessor :name, :age, :wallet
 	def initialize
+		puts "Add New Player:"
 		puts "What's your name?"
 		@name = gets.strip
 		puts "What's your age #{@name}?"
