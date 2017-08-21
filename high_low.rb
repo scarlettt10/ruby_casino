@@ -3,10 +3,9 @@ class HighLow
     @deck = Deck.new
     puts "Welcome to High Low, #{player.name}!"
     puts "You have #{player.wallet.amount} to bet with."
-    puts "Type 'play' to continue or 'quit' to exit."
+    puts "Type '1' to continue or '2' to exit."
     case gets.to_i
     when 1
-      # @deck = Deck.new
       hilo_menu
     when 2
       main_menu
@@ -44,10 +43,9 @@ def hilo_reset_deck
 end
 
 def hilo_menu
-    puts "1) Generate Deck"
-    puts "2) Shuffle Deck"
-    puts "3) Pull random card"
-    puts "4) Clear Deck"
+    puts "1) Shuffle Deck"
+    puts "2) Pull random card"
+    puts "3) Clear Deck"
     case gets.to_i
       when 1
         hilo_generate
