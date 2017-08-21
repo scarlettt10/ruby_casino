@@ -1,5 +1,4 @@
 
-
 class Card
   # Getter and Setter methods for rank, suit and color
   attr_accessor :rank, :suit, :color
