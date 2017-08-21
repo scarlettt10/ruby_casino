@@ -11,3 +11,7 @@ class Player
 		@wallet = Wallet.new(gets.to_f)
 	end
 end
+
+player_1 = Player.new
+player_2 = Player.new
+
