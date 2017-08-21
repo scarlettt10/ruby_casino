@@ -11,9 +11,8 @@ class Casino
 		puts "Welcome to the RUBY CASINO"
     @player = Player.new
     menu
-		
   end
-  
+
   def menu
     puts "1) Play HighLow"
     puts "2) Quit"
@@ -23,12 +22,12 @@ class Casino
       when 2
         puts "Thanks for playing"
         exit
-      else 
+      else
         puts "Invlaid Choice! Try again!"
         menu
     end
   	menu
-  end  
+  end
 end
 
 Casino.new
