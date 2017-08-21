@@ -1,5 +1,5 @@
-class Highlow
-  def initalize(player)
+class HighLow
+  def initialize(player)
     puts "Welcome to High Low #{player.name}"
     puts "You have #{player.wallet.amount} to bet with"
     #ask the player for bet

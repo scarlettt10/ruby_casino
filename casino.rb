@@ -10,7 +10,6 @@ class Casino
 	def initialize
 		puts "Welcome to the RUBY CASINO"
     @player = Player.new
-    Highlow.new(@Player)
     menu
 		
   end
@@ -18,19 +17,18 @@ class Casino
   def menu
     puts "1) Play HighLow"
     puts "2) Quit"
-
-      case gets.to_i
-        when 1
-          HighLow.new(@player)
-        when 2
-          puts "Thanks for playing"
-          exit
-        else 
-          puts "Invlaid Choice! Try again!"
-          menu
-      end
-    menu
-    end  
+    case gets.to_i
+      when 1
+        HighLow.new(@player)
+      when 2
+        puts "Thanks for playing"
+        exit
+      else 
+        puts "Invlaid Choice! Try again!"
+        menu
+    end
+  	menu
+  end  
 end
 
 Casino.new
