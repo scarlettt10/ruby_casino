@@ -1,5 +1,6 @@
 require 'pry'
 require 'colorize'
+require 'sounder'
 
 require_relative 'player'
 require_relative 'high_low'
@@ -8,36 +9,61 @@ class Casino
 	attr_accessor :player
 
 	def initialize
-		puts "Welcome to the RUBY CASINO"
-		puts ""
+		puts '  _   _   _   _   _   _   _     _   _     _   _   _  '.colorize(:yellow)
+  	puts ' / \ / \ / \ / \ / \ / \ / \   / \ / \   / \ / \ / \ '.colorize(:yellow)
+ 		puts '( W | E | L | C | O | M | E ) ( T | O ) ( T | H | E )'.colorize(:yellow)
+ 		puts ' \_/ \_/ \_/ \_/ \_/ \_/ \_/   \_/ \_/   \_/ \_/ \_/ '.colorize(:yellow)
+		puts "                                                                                                                       
+     ##### /##                 /                               # ###                                                   
+  ######  / ##               #/                              /  /###  /                      #                         
+ /#   /  /  ##               ##                             /  /  ###/                      ###                        
+/    /  /   ##               ##                            /  ##   ##                        #                         
+    /  /    /                ##                           /  ###                                                       
+   ## ##   /   ##   ####     ## /###   ##   ####         ##   ##          /###      /###   ###   ###  /###     /###    
+   ## ##  /     ##    ###  / ##/ ###  / ##    ###  /     ##   ##         / ###  /  / #### / ###   ###/ #### / / ###  / 
+   ## ###/      ##     ###/  ##   ###/  ##     ###/      ##   ##        /   ###/  ##  ###/   ##    ##   ###/ /   ###/  
+   ## ##  ###   ##      ##   ##    ##   ##      ##       ##   ##       ##    ##  ####        ##    ##    ## ##    ##   
+   ## ##    ##  ##      ##   ##    ##   ##      ##       ##   ##       ##    ##    ###       ##    ##    ## ##    ##   
+   #  ##    ##  ##      ##   ##    ##   ##      ##        ##  ##       ##    ##      ###     ##    ##    ## ##    ##   
+      /     ##  ##      ##   ##    ##   ##      ##         ## #      / ##    ##        ###   ##    ##    ## ##    ##   
+  /##/      ### ##      /#   ##    /#   ##      ##          ###     /  ##    /#   /###  ##   ##    ##    ## ##    ##   
+ /  ####    ##   ######/ ##   ####/      #########           ######/    ####/ ## / #### /    ### / ###   ### ######    
+/    ##     #     #####   ##   ###         #### ###            ###       ###   ##   ###/      ##/   ###   ### ####     
+#                                                ###                                                                   
+ ##                                       #####   ###                                                                  
+                                        /#######  /#                                                                   
+                                       /      ###/                                                                     ".colorize(:red)
     @player = Player.new
-    menu
+    main_menu
   end
 
-  def menu
-    puts "1) Play HighLow"
-    puts "2) Quit"
+  def main_menu
+    puts "1) Play High Low"
+    puts "2) Slots"
+    puts "3) Quit"
     case gets.to_i
       when 1
         HighLow.new(@player)
       	HighLow
       when 2
+      	Slots.new(@player)
+      	Slots
+      when 3
         puts "Thanks for playing"
-        puts "?$$'''$N        $$$''^#$            $              d$*'''$d       '$$F  '$r   
-'$$   $$k       9$$    '           d$N            $$F     *        $$>    *   
-'$$   $$F       9$$  :             $$$r          $$$               $$>  f     
-'$$   $$        9$$.e$            . $$$          $$$               $$L.$F     
-'$$**#'         9$$ ^$            f  $$L         $$$               $$> ^F     
-'$$             9$$  '           .   '$$         $$$               $$>  F     
-'$$             9$$     '        P''''$$N        '$$.     J        $$>    x   
-{$$             9$$   .$        '     '$$         ^$$.   d$        $$r   dF   
-''''           `''''''''       '''    ''''           ''''         ''''''''".colorize(:cyan)
+        puts "                                                                                                                                      
+     _/_/_/    _/_/    _/      _/  _/_/_/_/     _/_/_/      _/_/      _/_/_/  _/    _/       _/_/_/    _/_/      _/_/    _/      _/   
+  _/        _/    _/  _/_/  _/_/  _/           _/    _/  _/    _/  _/        _/  _/       _/        _/    _/  _/    _/  _/_/    _/    
+ _/        _/    _/  _/  _/  _/  _/_/_/       _/_/_/    _/_/_/_/  _/        _/_/           _/_/    _/    _/  _/    _/  _/  _/  _/     
+_/        _/    _/  _/      _/  _/           _/    _/  _/    _/  _/        _/  _/             _/  _/    _/  _/    _/  _/    _/_/      
+ _/_/_/    _/_/    _/      _/  _/_/_/_/     _/_/_/    _/    _/    _/_/_/  _/    _/     _/_/_/      _/_/      _/_/    _/      _/       
+                                                                                                                                      
+                                                                                                                                      ".colorize(:cyan)
         exit
       else 
         puts "Invalid Choice! Try again!"
-        menu
+        main_menu
     end
-  	menu
+  	main_menu
   end
 end
 
