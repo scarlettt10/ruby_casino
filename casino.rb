@@ -4,12 +4,19 @@ require 'sounder'
 
 require_relative 'player'
 require_relative 'high_low'
+require_relative 'deck'
 
 class Casino
 	attr_accessor :player
 
 	def initialize
-		puts '  _   _   _   _   _   _   _     _   _     _   _   _  '.colorize(:yellow)
+
+    @player = Player.new
+    main_menu
+  end
+
+  def main_menu
+  	puts '  _   _   _   _   _   _   _     _   _     _   _   _  '.colorize(:yellow)
   	puts ' / \ / \ / \ / \ / \ / \ / \   / \ / \   / \ / \ / \ '.colorize(:yellow)
  		puts '( W | E | L | C | O | M | E ) ( T | O ) ( T | H | E )'.colorize(:yellow)
  		puts ' \_/ \_/ \_/ \_/ \_/ \_/ \_/   \_/ \_/   \_/ \_/ \_/ '.colorize(:yellow)
@@ -33,23 +40,18 @@ class Casino
  ##                                       #####   ###                                                                  
                                         /#######  /#                                                                   
                                        /      ###/                                                                     ".colorize(:red)
-    @player = Player.new
-    main_menu
-  end
-
-  def main_menu
     puts "1) Play High Low"
-    puts "2) Slots"
-    puts "3) Quit"
+    puts "2) Play Slots"
+    puts "3) Add player"
+    puts "4) Quit"
     case gets.to_i
       when 1
         HighLow.new(@player)
-      	HighLow
       when 2
       	Slots.new(@player)
-      	Slots
       when 3
-        puts "Thanks for playing"
+
+      when 4
         puts "                                                                                                                                      
      _/_/_/    _/_/    _/      _/  _/_/_/_/     _/_/_/      _/_/      _/_/_/  _/    _/       _/_/_/    _/_/      _/_/    _/      _/   
   _/        _/    _/  _/_/  _/_/  _/           _/    _/  _/    _/  _/        _/  _/       _/        _/    _/  _/    _/  _/_/    _/    
@@ -60,7 +62,7 @@ _/        _/    _/  _/      _/  _/           _/    _/  _/    _/  _/        _/  _
                                                                                                                                       ".colorize(:cyan)
         exit
       else 
-        puts "Invalid Choice! Try again!"
+        puts "Invalid Choice! Try again!".colorize(:red)
         main_menu
     end
   	main_menu
