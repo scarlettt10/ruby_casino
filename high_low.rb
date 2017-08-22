@@ -29,16 +29,13 @@ end
 def hilo_pull_card(player)
   card = @deck.cards.sample.rank
   puts "Your card is >> #{card}!"
-  if card.to_i > 7
-    puts "You won $200!"
-    puts "You have #{player.wallet.amount} now."
-  hilo_menu
-  elsif card.to_s == "A"
-  puts "You won $400!"
-  else
+  case card
+  when "2", "3", "4", "5", "6", "7", "8", "9", "10"
     puts "You lost $200!"
-    puts "You have #{player.wallet.amount} left."
-    hilo_menu(player)
+  when "J", "Q", "K"
+    puts "You won $200!"
+  when "A"
+    puts "You won $400!"
   end
 end
 
@@ -55,7 +52,7 @@ def hilo_menu(player)
     puts "4) Exit."
     case gets.to_i
       when 1
-        hilo_shuffle
+        hilo_shuffle(player)
       when 2
         hilo_pull_card(player)
       when 3
