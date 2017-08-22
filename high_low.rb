@@ -1,25 +1,24 @@
 
 class HighLow
-  def initialize(player)
+  attr_accessor :casino
+  def initialize(casino, player)
+    @casino = casino
+    @deck = Deck.new
     puts "Welcome to High Low, #{player.name}!"
-    puts "You have #{player.wallet.amount} to bet with."
+    puts "You have $#{player.wallet.amount} to bet with."
     puts "Type '1' to continue or '2' to exit."
     case gets.to_i
     when 1
-      @deck = Deck.new
-      hilo_menu
+      hilo_menu(player)
     when 2
-      main_menu
-    else
-      puts "Invalid Entry, Try Again!"
+      @casino.main_menu
     end
   end
-
 
 def hilo_shuffle
   if @deck.cards.any?
     @deck.shuffle_cards
-    puts "Cards shuffled"
+    puts "Cards shuffled!"
     hilo_menu
   else
     "There is no deck, generate a new one!"
@@ -27,15 +26,19 @@ def hilo_shuffle
   end
 end
 
-def hilo_pull_card
+def hilo_pull_card(player)
   card = @deck.cards.sample.rank
   puts "Your card is >> #{card}!"
-  if card[:i] > 6
+  if card.to_i > 7
     puts "You won $200!"
+    puts "You have #{player.wallet.amount} now."
   hilo_menu
+  elsif card.to_s == "A"
+  puts "You won $400!"
   else
     puts "You lost $200!"
-    hilo_menu
+    puts "You have #{player.wallet.amount} left."
+    hilo_menu(player)
   end
 end
 
@@ -45,7 +48,7 @@ def hilo_reset_deck
   hilo_menu
 end
 
-def hilo_menu
+def hilo_menu(player)
     puts "1) Shuffle Deck."
     puts "2) Pull random card and bet $100."
     puts "3) Clear Deck."
@@ -54,13 +57,13 @@ def hilo_menu
       when 1
         hilo_shuffle
       when 2
-        hilo_pull_card
+        hilo_pull_card(player)
       when 3
         hilo_reset_deck
       when 4
-        main_menu
+        @casino.main_menu
       else
         "Invalid Entry, Try Again!"
      end
-  end
-end
+   end
+ end
