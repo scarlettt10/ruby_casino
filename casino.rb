@@ -59,7 +59,7 @@ _/        _/    _/  _/      _/  _/           _/    _/  _/    _/  _/        _/  _
  _/_/_/    _/_/    _/      _/  _/_/_/_/     _/_/_/    _/    _/    _/_/_/  _/    _/     _/_/_/      _/_/      _/_/    _/      _/
 
                                                                                                                                       ".colorize(:cyan)
-        break
+        exit
       else
         puts "Invalid Choice! Try again!".colorize(:red)
     end

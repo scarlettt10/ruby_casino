@@ -18,7 +18,7 @@ def run()
     when 1
       hilo_menu(player)
     when 2
-      break
+      @casino.main_menu
     end
   end
 
