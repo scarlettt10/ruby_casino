@@ -11,8 +11,8 @@ class Casino
 
 	def initialize
 
-    @player_1 = Player.new
-    main_menu
+    @player = Player.new
+    self.main_menu
   end
 
   def main_menu
@@ -42,21 +42,13 @@ class Casino
                                        /      ###/                                                                     ".colorize(:red)
     puts "1) Play High Low"
     puts "2) Play Slots"
-    puts "3) Add Player 2?"
-    puts "4) List player names"
-    puts "5) Quit"
+    puts "3) Quit"
     case gets.to_i
       when 1
-        HighLow.new(@player)
+        HighLow.new(self, @player)
       when 2
-      	Slots.new(@player)
+      	Slots.new(self, @player)
       when 3
-    @player_2 = Player.new
-      	main_menu
-      when 4
-      	puts "#{@player_1.name}"
-      	puts "#{@player_2.name}"
-      when 5
         puts "                                                                                                                                      
      _/_/_/    _/_/    _/      _/  _/_/_/_/     _/_/_/      _/_/      _/_/_/  _/    _/       _/_/_/    _/_/      _/_/    _/      _/   
   _/        _/    _/  _/_/  _/_/  _/           _/    _/  _/    _/  _/        _/  _/       _/        _/    _/  _/    _/  _/_/    _/    
