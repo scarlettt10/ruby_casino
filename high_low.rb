@@ -1,19 +1,28 @@
 
 class HighLow
   attr_accessor :casino
+  attr_accessor :player
+
   def initialize(casino, player)
     @casino = casino
     @deck = Deck.new
-    puts "Welcome to High Low, #{player.name}!"
-    puts "You have $#{player.wallet.total} to bet with."
+    @player = player
+end
+
+def run()
+  puts "Welcome to High Low, #{player.name}!"
+  puts "You have $#{player.wallet.total} to bet with.".colorize(:green)
+  while true do
     puts "Type '1' to continue or '2' to exit."
     case gets.to_i
     when 1
       hilo_menu(player)
     when 2
-      @casino.main_menu
+      break
     end
   end
+
+end
 
 def hilo_shuffle(player)
   if @deck.cards.any?
@@ -28,24 +37,24 @@ end
 
 def init_total(player)
   @total = player.wallet.total
-  puts "Your total is: $#{@total}"
-  hilo_menu(player)
+  puts "Your total is: $#{@total}".colorize(:green)
+  @casino.main_menu
 end
 
 def hilo_pull_card(player)
   card = @deck.cards.sample.rank
-  puts "Your card is >> #{card}!"
+  puts "Your card is >> #{card}!".colorize(:yellow)
   case card
   when "2", "3", "4", "5", "6", "7", "8", "9", "10"
-    puts "You lost $200!"
+    puts "You lost $200!".colorize(:red)
     player.wallet.lose(200)
     init_total(player)
   when "J", "Q", "K"
-    puts "You won $200!"
+    puts "You won $200!".colorize(:green)
     player.wallet.win(200)
     init_total(player)
   when "A"
-    puts "You won $400!"
+    puts "You won $400!".colorize(:green)
     player.wallet.win(400)
     init_total(player)
   end

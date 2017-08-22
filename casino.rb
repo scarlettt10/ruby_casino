@@ -7,12 +7,9 @@ require_relative 'high_low'
 require_relative 'deck'
 
 class Casino
-	attr_accessor :player
 
-	def initialize
-
-    @player = Player.new
-    self.main_menu
+	def initialize(player)
+    @player = player
   end
 
   def main_menu
@@ -20,88 +17,56 @@ class Casino
   	puts ' / \ / \ / \ / \ / \ / \ / \   / \ / \   / \ / \ / \ '.colorize(:yellow)
  		puts '( W | E | L | C | O | M | E ) ( T | O ) ( T | H | E )'.colorize(:yellow)
  		puts ' \_/ \_/ \_/ \_/ \_/ \_/ \_/   \_/ \_/   \_/ \_/ \_/ '.colorize(:yellow)
-		puts "                                                                                                                       
-     ##### /##                 /                               # ###                                                   
-  ######  / ##               #/                              /  /###  /                      #                         
- /#   /  /  ##               ##                             /  /  ###/                      ###                        
-/    /  /   ##               ##                            /  ##   ##                        #                         
-    /  /    /                ##                           /  ###                                                       
-   ## ##   /   ##   ####     ## /###   ##   ####         ##   ##          /###      /###   ###   ###  /###     /###    
-   ## ##  /     ##    ###  / ##/ ###  / ##    ###  /     ##   ##         / ###  /  / #### / ###   ###/ #### / / ###  / 
-   ## ###/      ##     ###/  ##   ###/  ##     ###/      ##   ##        /   ###/  ##  ###/   ##    ##   ###/ /   ###/  
-   ## ##  ###   ##      ##   ##    ##   ##      ##       ##   ##       ##    ##  ####        ##    ##    ## ##    ##   
-   ## ##    ##  ##      ##   ##    ##   ##      ##       ##   ##       ##    ##    ###       ##    ##    ## ##    ##   
-   #  ##    ##  ##      ##   ##    ##   ##      ##        ##  ##       ##    ##      ###     ##    ##    ## ##    ##   
-      /     ##  ##      ##   ##    ##   ##      ##         ## #      / ##    ##        ###   ##    ##    ## ##    ##   
-  /##/      ### ##      /#   ##    /#   ##      ##          ###     /  ##    /#   /###  ##   ##    ##    ## ##    ##   
- /  ####    ##   ######/ ##   ####/      #########           ######/    ####/ ## / #### /    ### / ###   ### ######    
-/    ##     #     #####   ##   ###         #### ###            ###       ###   ##   ###/      ##/   ###   ### ####     
-#                                                ###                                                                   
- ##                                       #####   ###                                                                  
-                                        /#######  /#                                                                   
+		puts "
+     ##### /##                 /                               # ###
+  ######  / ##               #/                              /  /###  /                      #
+ /#   /  /  ##               ##                             /  /  ###/                      ###
+/    /  /   ##               ##                            /  ##   ##                        #
+    /  /    /                ##                           /  ###
+   ## ##   /   ##   ####     ## /###   ##   ####         ##   ##          /###      /###   ###   ###  /###     /###
+   ## ##  /     ##    ###  / ##/ ###  / ##    ###  /     ##   ##         / ###  /  / #### / ###   ###/ #### / / ###  /
+   ## ###/      ##     ###/  ##   ###/  ##     ###/      ##   ##        /   ###/  ##  ###/   ##    ##   ###/ /   ###/
+   ## ##  ###   ##      ##   ##    ##   ##      ##       ##   ##       ##    ##  ####        ##    ##    ## ##    ##
+   ## ##    ##  ##      ##   ##    ##   ##      ##       ##   ##       ##    ##    ###       ##    ##    ## ##    ##
+   #  ##    ##  ##      ##   ##    ##   ##      ##        ##  ##       ##    ##      ###     ##    ##    ## ##    ##
+      /     ##  ##      ##   ##    ##   ##      ##         ## #      / ##    ##        ###   ##    ##    ## ##    ##
+  /##/      ### ##      /#   ##    /#   ##      ##          ###     /  ##    /#   /###  ##   ##    ##    ## ##    ##
+ /  ####    ##   ######/ ##   ####/      #########           ######/    ####/ ## / #### /    ### / ###   ### ######
+/    ##     #     #####   ##   ###         #### ###            ###       ###   ##   ###/      ##/   ###   ### ####
+#                                                ###
+ ##                                       #####   ###
+                                        /#######  /#
                                        /      ###/                                                                     ".colorize(:red)
+
+  highLow = HighLow.new(self, @player)
+
+  while true do
+
     puts "1) Play High Low"
     puts "2) Play Slots"
     puts "3) Quit"
     case gets.to_i
       when 1
-        HighLow.new(self, @player)
+        highLow.run()
       when 2
       	Slots.new(self, @player)
       when 3
-        puts "                                                                                                                                      
-     _/_/_/    _/_/    _/      _/  _/_/_/_/     _/_/_/      _/_/      _/_/_/  _/    _/       _/_/_/    _/_/      _/_/    _/      _/   
-  _/        _/    _/  _/_/  _/_/  _/           _/    _/  _/    _/  _/        _/  _/       _/        _/    _/  _/    _/  _/_/    _/    
- _/        _/    _/  _/  _/  _/  _/_/_/       _/_/_/    _/_/_/_/  _/        _/_/           _/_/    _/    _/  _/    _/  _/  _/  _/     
-_/        _/    _/  _/      _/  _/           _/    _/  _/    _/  _/        _/  _/             _/  _/    _/  _/    _/  _/    _/_/      
- _/_/_/    _/_/    _/      _/  _/_/_/_/     _/_/_/    _/    _/    _/_/_/  _/    _/     _/_/_/      _/_/      _/_/    _/      _/       
-                                                                                                                                      
+        puts "
+     _/_/_/    _/_/    _/      _/  _/_/_/_/     _/_/_/      _/_/      _/_/_/  _/    _/       _/_/_/    _/_/      _/_/    _/      _/
+  _/        _/    _/  _/_/  _/_/  _/           _/    _/  _/    _/  _/        _/  _/       _/        _/    _/  _/    _/  _/_/    _/
+ _/        _/    _/  _/  _/  _/  _/_/_/       _/_/_/    _/_/_/_/  _/        _/_/           _/_/    _/    _/  _/    _/  _/  _/  _/
+_/        _/    _/  _/      _/  _/           _/    _/  _/    _/  _/        _/  _/             _/  _/    _/  _/    _/  _/    _/_/
+ _/_/_/    _/_/    _/      _/  _/_/_/_/     _/_/_/    _/    _/    _/_/_/  _/    _/     _/_/_/      _/_/      _/_/    _/      _/
+
                                                                                                                                       ".colorize(:cyan)
-        exit
-      else 
-        puts "Invalid Choice! Try again!".colorize(:red)
-        main_menu
-    end
-  	main_menu
-  end
-end
-
-Casino.new
-
-
-=begin
-#teacher code from slack
-
-require 'pry'
-require_relative 'player'
-require_relative 'high_low'
-
-class Casino
-  attr_accessor :player
-
-  def initialize
-    puts 'Welcome To The Ruby Casino'
-    @player = Player.new
-    menu
-  end
-
-  def menu
-    puts "1) Play HighLow"
-    puts "2) Quit"
-    case gets.to_i
-      when 1
-        HighLow.new(@player)
-      when 2
-        puts 'Thanks for playing'
-        exit
+        break
       else
-        puts 'Invalid Choice! Try Again!'
-        menu
+        puts "Invalid Choice! Try again!".colorize(:red)
     end
-    menu
   end
 end
+end
 
-Casino.new
-
-=end
+player = Player.new()
+casino = Casino.new(player)
+casino.main_menu()
