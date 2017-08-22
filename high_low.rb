@@ -32,8 +32,11 @@ def hilo_pull_card(player)
   case card
   when "2", "3", "4", "5", "6", "7", "8", "9", "10"
     puts "You lost $200!"
+
   when "J", "Q", "K"
     puts "You won $200!"
+    player.wallet.win(200)
+    binding.pry
   when "A"
     puts "You won $400!"
   end
