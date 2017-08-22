@@ -38,7 +38,7 @@ end
 def init_total(player)
   @total = player.wallet.total
   puts "Your total is: $#{@total}".colorize(:green)
-  @casino.main_menu
+  hilo_menu(player)
 end
 
 def hilo_pull_card(player)
